@@ -74,7 +74,7 @@ const Contact: React.FC = () => {
               ))}
             </div>
             <p className={styles.directEmail}>
-              Or email me directly at: <a href="mailto:naveen.yohannan@example.com">naveen.yohannan@example.com</a> {/* Replace with actual email */}
+              Or email me directly at: <a href="mailto:naveenyohannan.in@gmail.com">naveenyohannan.in@gmail.com</a> {/* Replace with actual email */}
             </p>
           </div>
 
