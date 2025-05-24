@@ -12,8 +12,7 @@
   padding-top: 80px;
   /* Account for fixed navbar height */
   padding-bottom: var(--spacing-xxl);
-  background: var(--bg-gradient-2);
-  /* Use a different gradient for hero */
+  background: url('/bg.jpg') no-repeat center center/cover;
   overflow: hidden;
   /* Prevent content spill */
 }
