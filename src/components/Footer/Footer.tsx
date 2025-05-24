@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
                   >
                     {/* Placeholder for actual icons - replace with SVGs or <img> */}
                     {link.icon ? (
-                      <img src={`/assets/icons/${link.icon}`} alt={link.name} className={styles.socialIcon} />
+                      <img src={link.icon} alt={link.name} className={styles.socialIcon} />
                     ) : (
                       <span>{link.name.substring(0, 2).toUpperCase()}</span> // Fallback to initials
                     )}
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>Designed with Glassmorphism aesthetics.</p>
+          {/* <p>Designed with Glassmorphism aesthetics.</p> */}
           {/* You can add more links or info here if needed */}
         </div>
       </div>

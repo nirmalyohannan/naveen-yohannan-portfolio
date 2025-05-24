@@ -11,8 +11,8 @@ export const navLinks: NavLink[] = [
 
 export const socialLinks: SocialLink[] = [
   // Add actual social media links here
-  { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/naveen_yohannan/', icon: 'instagram-icon.svg' }, // Example, replace with actual icon path or class
-  { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/naveenyohannan/', icon: 'linkedin-icon.svg' },
+  { id: 'instagram', name: 'Instagram', url: 'https://www.instagram.com/naveen.yohannan/', icon: 'src/assets/icons/instagram.svg' }, // Example, replace with actual icon path or class
+  { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/naveenyo/', icon: 'src/assets/icons/linkedin.svg' },
   // { id: 'facebook', name: 'Facebook', url: '#', icon: 'facebook-icon.svg' },
 ];
 
@@ -26,7 +26,7 @@ export const aboutMeData: AboutMeData = {
     "Explore my portfolio and discover the art of impactful storytelling through light and imagery."
   ],
   profileImageUrl: 'src/assets/profile_pic.jpg',
-  cvUrl: '/assets/cv/NaveenYohannan_CV.pdf', // Placeholder, replace with actual CV path
+  // cvUrl: '/assets/cv/NaveenYohannan_CV.pdf', // Add CV Path, Download CV Option will be visible in About Me Section
 };
 
 export const servicesData: Service[] = [

@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
               {socialLinks.map(link => (
                 <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className={`${styles.socialLink} btn btn-glass`}>
                   {/* Placeholder for icon, replace with actual SVG or <img> */}
-                  {link.icon && <img src={`/assets/icons/${link.icon}`} alt={link.name} className={styles.socialIcon} />}
+                  {link.icon && <img src={link.icon} alt={link.name} className={styles.socialIcon} />}
                   {!link.icon && link.name}
                 </a>
               ))}
