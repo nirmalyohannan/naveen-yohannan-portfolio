@@ -25,7 +25,7 @@ export const aboutMeData: AboutMeData = {
     "With a background in BSc. Media Technology, I've worked as a graphic designer and a freelance wedding photographer, honing my skills in visual storytelling and creative expression.",
     "Explore my portfolio and discover the art of impactful storytelling through light and imagery."
   ],
-  profileImageUrl: '/assets/profile/naveen-profile.jpg', // Placeholder, replace with actual path if available or use a generic one
+  profileImageUrl: 'src/assets/profile_pic.jpg',
   cvUrl: '/assets/cv/NaveenYohannan_CV.pdf', // Placeholder, replace with actual CV path
 };
 
