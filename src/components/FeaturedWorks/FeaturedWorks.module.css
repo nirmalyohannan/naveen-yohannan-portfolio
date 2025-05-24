@@ -1,0 +1,231 @@
+/* src/components/FeaturedWorks/FeaturedWorks.module.css */
+@import '../../styles/variables.css';
+/* @import "swiper/css/pagination";
+@import "swiper/css/navigation";
+@import "swiper/css"; */
+
+.featuredWorksSection {
+  background: var(--bg-gradient-3);
+  /* Different background for this section */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.sectionTitle {
+  /* Uses global section-title, can be overridden if needed */
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.swiperContainerWrapper {
+  /* Optional: Add padding or margin around the Swiper */
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-xl);
+}
+
+/* Ensure Swiper slides are displayed inline-block or flex items */
+/* Swiper's default styles usually handle this, but we can add overrides if needed */
+.swiper-slide {
+  /* Example: Ensure slides take up their content width or a defined width */
+  /* width: auto !important; */
+  /* flex-shrink: 0; */
+}
+
+.workItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  /* Maintain aspect ratio for images */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Placeholder bg while image loads */
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.workItem:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.workImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cover the area, might crop */
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.workItem:hover .workImage {
+  transform: scale(1.1);
+}
+
+.workItemOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--spacing-md);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  color: var(--text-color-light);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  text-align: left;
+}
+
+.workItem:hover .workItemOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.workItemTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-color-light);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.workItemCategory {
+  font-size: var(--font-size-sm);
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.emptyMessage {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--text-color-muted);
+  padding: var(--spacing-xl) 0;
+  min-height: 200px;
+  /* Ensure some space even when empty */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-lg);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  /* Darker overlay for modal */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--spacing-md);
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: var(--glass-bg-color);
+  border: var(--glass-border-width) solid var(--glass-border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--glass-box-shadow-hover);
+  padding: var(--spacing-sm);
+  /* Minimal padding around the image container */
+  transform: scale(0.95);
+  animation: scaleUp 0.3s forwards 0.1s;
+}
+
+@keyframes scaleUp {
+  to {
+    transform: scale(1);
+  }
+}
+
+.modalImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 40px);
+  /* Account for padding/close button */
+  object-fit: contain;
+  border-radius: calc(var(--border-radius-lg) - var(--spacing-sm));
+  /* Inner radius */
+}
+
+.closeModalButton {
+  position: absolute;
+  top: calc(var(--spacing-md) * -1 - 5px);
+  /* Position outside the content box */
+  right: calc(var(--spacing-md) * -1 - 5px);
+  background: var(--primary-color);
+  color: var(--text-color-light);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  line-height: 38px;
+  /* Center the 'x' */
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 2001;
+}
+
+.closeModalButton:hover {
+  background: var(--accent-color);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* Responsive adjustments for grid */
+@media (max-width: 768px) {
+  .swiperContainerWrapper {
+    padding: var(--spacing-md);
+  }
+
+  .workItemOverlay {
+    padding: var(--spacing-sm);
+  }
+
+  .workItemTitle {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .swiperContainerWrapper {
+    padding: var(--spacing-md);
+  }
+
+  .closeModalButton {
+    width: 35px;
+    height: 35px;
+    font-size: var(--font-size-lg);
+    line-height: 33px;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+
+  .modalContent {
+    padding: var(--spacing-xs);
+  }
+}

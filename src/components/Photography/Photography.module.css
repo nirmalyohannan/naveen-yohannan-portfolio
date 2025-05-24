@@ -1,0 +1,213 @@
+/* src/components/Photography/Photography.module.css */
+@import '../../styles/variables.css';
+
+.photographySection {
+  background: var(--bg-gradient-4);
+  /* Yet another background for variety */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.sectionTitle {
+  color: var(--text-color-dark);
+  /* Darker text for lighter backgrounds if needed */
+  margin-bottom: var(--spacing-xl);
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Slightly smaller min for more items */
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.15);
+  /* Lighter glass for this section */
+  border-radius: var(--border-radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.photoItem {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  aspect-ratio: 3 / 4;
+  /* Portrait-oriented aspect ratio common in photography */
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.photoItem:hover {
+  transform: scale(1.03) translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease-in-out;
+}
+
+.photoItem:hover .photoImage {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.photoItemOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--spacing-md);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+  color: var(--text-color-light);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  text-align: center;
+}
+
+.photoItem:hover .photoItemOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.photoItemTitle {
+  font-size: var(--font-size-md);
+  /* Adjusted for potentially more items */
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.emptyMessage {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--text-color-dark);
+  /* Adjust if background is light */
+  padding: var(--spacing-xl) 0;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-lg);
+}
+
+/* Modal Styles - Reusing from FeaturedWorks or define separately if different */
+/* For brevity, assuming modal styles are similar and can be shared or slightly adapted */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Darker overlay for modal */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--spacing-md);
+  opacity: 0;
+  animation: fadeInPhotography 0.3s forwards;
+}
+
+@keyframes fadeInPhotography {
+  to {
+    opacity: 1;
+  }
+}
+
+.modalContent {
+  position: relative;
+  max-width: 95vw;
+  /* Allow slightly larger modal for photography */
+  max-height: 95vh;
+  background: rgba(30, 30, 30, 0.5);
+  /* Darker glass for modal content */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-xs);
+  transform: scale(0.95);
+  animation: scaleUpPhotography 0.3s forwards 0.1s;
+}
+
+@keyframes scaleUpPhotography {
+  to {
+    transform: scale(1);
+  }
+}
+
+.modalImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(95vh - 20px);
+  object-fit: contain;
+  border-radius: var(--border-radius-md);
+}
+
+.closeModalButton {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  line-height: 34px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2001;
+}
+
+.closeModalButton:hover {
+  background: var(--accent-color);
+  color: var(--text-color-dark);
+  transform: rotate(90deg) scale(1.1);
+  border-color: var(--accent-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .photoGrid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .photoItemOverlay {
+    padding: var(--spacing-sm);
+  }
+
+  .photoItemTitle {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .photoGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Smaller items for mobile */
+    gap: var(--spacing-sm);
+  }
+
+  .photoItem {
+    aspect-ratio: 2 / 3;
+    /* More portrait focus */
+  }
+}

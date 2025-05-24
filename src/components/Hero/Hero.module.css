@@ -1,0 +1,201 @@
+/* src/components/Hero/Hero.module.css */
+@import '../../styles/variables.css';
+
+.heroSection {
+  min-height: 100vh;
+  /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-top: 80px;
+  /* Account for fixed navbar height */
+  padding-bottom: var(--spacing-xxl);
+  background: var(--bg-gradient-2);
+  /* Use a different gradient for hero */
+  overflow: hidden;
+  /* Prevent content spill */
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Optional: Add a subtle pattern or texture overlay */
+  /* background-image: url('/assets/patterns/hero-pattern.svg'); */
+  /* opacity: 0.05; */
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  /* Glass effect applied globally, but we can enhance it */
+  padding: var(--spacing-xl) var(--spacing-xxl);
+  /* More padding for hero content box */
+  background: rgba(255, 255, 255, 0.05);
+  /* Even more transparent for hero main box */
+  backdrop-filter: blur(10px);
+  /* Slightly less blur than navbar for layering */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--border-radius-xl);
+}
+
+.heroTitle {
+  font-size: var(--font-size-display);
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.heroTitle .highlight {
+  color: var(--accent-color);
+  /* Or a specific hero highlight color */
+  display: inline-block;
+  /* Allows for potential animation or specific styling */
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-color-muted);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  flex-direction: column;
+  /* Stack buttons on smaller screens */
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.ctaButtonPrimary,
+.ctaButtonSecondary {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  min-width: 200px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ctaButtonPrimary {
+  /* Uses btn-primary and btn-glass from global.css */
+  /* We can add specific overrides if needed */
+  background: var(--primary-color);
+  /* Ensure primary color stands out */
+  color: var(--text-color-light);
+}
+
+.ctaButtonPrimary:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.ctaButtonSecondary {
+  /* Uses btn-glass from global.css */
+  /* We can add specific overrides if needed */
+  color: var(--text-color-light);
+}
+
+.ctaButtonSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.scrollDownIndicator {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: var(--text-color-muted);
+  animation: bounce 2s infinite;
+  padding: var(--spacing-sm);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.scrollDownIndicator svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--text-color-light);
+}
+
+.scrollDownIndicator:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+
+  /* Medium devices (tablets, 768px and up) */
+  .heroActions {
+    flex-direction: row;
+    /* Buttons side-by-side on larger screens */
+  }
+
+  .heroTitle {
+    font-size: calc(var(--font-size-display) * 1.2);
+    /* Even larger title on desktop */
+  }
+
+  .heroSubtitle {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 576px) {
+
+  /* Small devices (landscape phones, 576px and down) */
+  .heroContent {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .heroTitle {
+    font-size: calc(var(--font-size-xxl) * 1.1);
+    /* Adjust for smaller screens */
+  }
+
+  .heroSubtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .ctaButtonPrimary,
+  .ctaButtonSecondary {
+    width: 100%;
+    /* Full width buttons on small screens */
+    max-width: 300px;
+  }
+}

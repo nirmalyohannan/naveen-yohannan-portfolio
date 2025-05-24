@@ -1,0 +1,225 @@
+/* src/components/Contact/Contact.module.css */
+@import '../../styles/variables.css';
+
+.contactSection {
+  background: var(--bg-gradient-2);
+  /* Choose a suitable gradient */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  color: var(--text-color-light);
+}
+
+.sectionTitle {
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.contactWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xl);
+  /* Main glass effect for the wrapper */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: var(--border-radius-xl);
+}
+
+.contactInfo {
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.contactInfoTitle {
+  font-size: var(--font-size-xl);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-md);
+}
+
+.contactInfoText {
+  font-size: var(--font-size-base);
+  color: var(--text-color-muted);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-lg);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.socialLinksContainer {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  /* Uses btn, btn-glass from global.css */
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-base);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 120px;
+  /* Ensure buttons have some width */
+  justify-content: center;
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  /* filter: brightness(0) invert(1); /* If icons are dark and need to be white */
+}
+
+.directEmail {
+  font-size: var(--font-size-base);
+  color: var(--text-color-muted);
+}
+
+.directEmail a {
+  color: var(--accent-color);
+  font-weight: var(--font-weight-bold);
+}
+
+.contactForm {
+  /* Glass effect applied individually for layering */
+  padding: var(--spacing-xl);
+  background: rgba(20, 20, 30, 0.4);
+  /* Darker glass for form */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.formTitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.formLabel {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--text-color-muted);
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+  color: var(--text-color-light);
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Very subtle background */
+  border: 1px solid var(--glass-border-color);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: rgba(248, 249, 250, 0.5);
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 0.2rem rgba(var(--accent-color), 0.25);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitButton {
+  /* Uses btn, btn-primary, btn-glass from global.css */
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submitMessage {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.submitMessage.success {
+  background-color: rgba(40, 167, 69, 0.2);
+  /* Greenish glass */
+  color: #d4edda;
+  border: 1px solid rgba(40, 167, 69, 0.4);
+}
+
+.submitMessage.error {
+  background-color: rgba(220, 53, 69, 0.2);
+  /* Reddish glass */
+  color: #f8d7da;
+  border: 1px solid rgba(220, 53, 69, 0.4);
+}
+
+.hiddenHoneypot {
+  display: none;
+}
+
+/* Desktop layout */
+@media (min-width: 992px) {
+  .contactWrapper {
+    grid-template-columns: 1fr 1.2fr;
+    /* Adjust ratio as needed */
+    align-items: flex-start;
+    /* Align items to the top */
+  }
+
+  .contactInfo {
+    text-align: left;
+    padding-right: var(--spacing-xl);
+    /* Add some space between info and form */
+  }
+
+  .contactInfoText {
+    margin-left: 0;
+  }
+
+  .socialLinksContainer {
+    justify-content: flex-start;
+  }
+
+  .formTitle {
+    text-align: left;
+  }
+}
+
+@media (max-width: 576px) {
+  .contactInfoTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .formTitle {
+    font-size: var(--font-size-md);
+  }
+}

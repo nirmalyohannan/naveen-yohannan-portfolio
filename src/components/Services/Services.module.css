@@ -1,0 +1,128 @@
+/* src/components/Services/Services.module.css */
+@import '../../styles/variables.css';
+
+.servicesSection {
+  background: var(--bg-gradient-5);
+  /* A fresh gradient for services */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.sectionTitle {
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  /* Main glass effect for the grid container */
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius-xl);
+}
+
+.serviceCard {
+  /* Individual cards also get a glass effect, creating layers */
+  padding: var(--spacing-lg);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  /* Slightly more opaque than grid container */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--border-radius-lg);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.serviceCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(31, 38, 135, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.serviceIconContainer {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-lg);
+  background-color: var(--accent-color);
+  /* Accent color for icon background */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-base);
+}
+
+.serviceCard:hover .serviceIconContainer {
+  background-color: var(--primary-color);
+  transform: rotateY(180deg);
+}
+
+.serviceIcon {
+  width: 40px;
+  height: 40px;
+  /* Assuming SVG icons that can be colored with 'fill' or are pre-colored */
+  /* filter: invert(1) brightness(2); /* Example if icons are dark and need to be light */
+}
+
+.serviceIconPlaceholder {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color-dark);
+}
+
+.serviceTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.serviceDescription {
+  font-size: var(--font-size-base);
+  color: var(--text-color-muted);
+  line-height: 1.7;
+  flex-grow: 1;
+  /* Allows description to take up space if cards have varying content height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .serviceCard {
+    padding: var(--spacing-md);
+  }
+
+  .serviceIconContainer {
+    width: 70px;
+    height: 70px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .serviceIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .serviceTitle {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 576px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    /* Single column on very small screens */
+  }
+}

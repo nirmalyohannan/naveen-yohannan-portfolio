@@ -1,0 +1,143 @@
+/* src/components/AboutMe/AboutMe.module.css */
+@import '../../styles/variables.css';
+
+.aboutSection {
+  background: var(--bg-gradient-1);
+  /* Reusing a gradient or choose a new one */
+  padding-top: var(--spacing-xxl);
+  padding-bottom: var(--spacing-xxl);
+  color: var(--text-color-light);
+}
+
+.sectionTitle {
+  /* Uses global section-title */
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-xl);
+}
+
+.aboutContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+  /* Glass effect applied globally */
+  padding: var(--spacing-xl);
+  background: rgba(20, 20, 30, 0.3);
+  /* Darker, more sophisticated glass */
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--border-radius-xl);
+}
+
+.profileImageContainer {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--glass-border-color);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1), var(--glass-box-shadow);
+  transition: var(--transition-base);
+  background-color: rgba(255, 255, 255, 0.1);
+  /* BG for when image is missing */
+}
+
+.profileImageContainer.noImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xxl);
+  color: var(--text-color-muted);
+  /* Add a placeholder icon or initials if image fails */
+}
+
+.profileImageContainer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.2), var(--glass-box-shadow-hover);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutTextContent {
+  text-align: center;
+  /* Center text for mobile-first */
+  max-width: 700px;
+}
+
+.aboutGreeting {
+  font-size: var(--font-size-lg);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-normal);
+}
+
+.aboutName {
+  font-size: var(--font-size-xxl);
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.aboutIntroduction p {
+  font-size: var(--font-size-base);
+  color: var(--text-color-muted);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.aboutIntroduction p:last-child {
+  margin-bottom: var(--spacing-xl);
+  /* More space before button */
+}
+
+.cvButton {
+  /* Uses btn, btn-primary, btn-glass from global.css */
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  min-width: 180px;
+  margin-top: var(--spacing-lg);
+}
+
+/* Desktop layout */
+@media (min-width: 992px) {
+
+  /* Large devices (desktops, 992px and up) */
+  .aboutContentWrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    /* Align items to the top for row layout */
+    gap: var(--spacing-xxl);
+    padding: var(--spacing-xxl);
+  }
+
+  .profileImageContainer {
+    width: 280px;
+    height: 280px;
+  }
+
+  .aboutTextContent {
+    text-align: left;
+    /* Align text to left for desktop */
+    flex: 1;
+    /* Allow text content to take available space */
+  }
+}
+
+@media (max-width: 576px) {
+  .profileImageContainer {
+    width: 150px;
+    height: 150px;
+  }
+
+  .aboutName {
+    font-size: var(--font-size-xl);
+  }
+
+  .aboutGreeting {
+    font-size: var(--font-size-md);
+  }
+}

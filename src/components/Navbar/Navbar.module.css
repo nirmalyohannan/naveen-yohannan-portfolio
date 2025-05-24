@@ -1,0 +1,257 @@
+/* src/components/Navbar/Navbar.module.css */
+@import '../../styles/variables.css';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: var(--spacing-sm) 0;
+  /* Reduced padding for a sleeker look */
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, padding 0.3s ease-in-out;
+  /* Inherits glass-effect from global.css, but we can override specifics */
+  background: rgba(20, 20, 30, 0.2);
+  /* Darker, more subtle glass */
+  backdrop-filter: blur(20px);
+  /* Stronger blur for navbar */
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: var(--glass-border-width) solid var(--glass-border-color);
+  border-radius: 0;
+  /* Full width, no top radius */
+}
+
+.navbar.scrolled {
+  background: rgba(10, 10, 20, 0.4);
+  /* Slightly more opaque on scroll */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: var(--spacing-xs) 0;
+  /* Even smaller padding on scroll */
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color-light);
+  text-decoration: none;
+  /* If using an image logo */
+  /* img { height: 40px; display: block; } */
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin-left: var(--spacing-lg);
+}
+
+.navLink {
+  color: var(--text-color-light);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  padding: var(--spacing-sm) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-color);
+  transition: width 0.3s ease-in-out;
+}
+
+.navLink:hover,
+.navLink.active
+
+/* For React Router activeClassName */
+  {
+  color: var(--accent-color);
+  /* background-color: rgba(255, 255, 255, 0.1); */
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 60%;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+}
+
+.desktopSocialLinks {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-lg);
+  /* Space before mobile toggle if it's next to it */
+}
+
+.socialIconLink {
+  color: var(--text-color-muted);
+  margin-left: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-base);
+}
+
+.socialIconLink:hover {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.mobileSocialLinks {
+  display: none;
+  /* Hidden on desktop */
+}
+
+.mobileMenuToggle {
+  display: none;
+  /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--text-color-light);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 1001;
+  /* Above nav menu when open */
+}
+
+.hamburgerBar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color-light);
+  margin: 5px 0;
+  transition: var(--transition-base);
+  border-radius: 2px;
+}
+
+/* Mobile Styles */
+@media (max-width: 992px) {
+
+  /* Breakpoint for tablet and mobile */
+  .desktopSocialLinks {
+    display: none;
+  }
+
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Start off-screen */
+    width: 70%;
+    max-width: 320px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align items to the top */
+    align-items: stretch;
+    /* Stretch items to fill width */
+    padding: calc(var(--spacing-xxl) * 1.5) var(--spacing-lg) var(--spacing-lg);
+    background: rgba(10, 10, 20, 0.8);
+    /* Darker, more solid for mobile menu */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    /* Smooth slide-in */
+    overflow-y: auto;
+  }
+
+  .navMenu.active {
+    right: 0;
+  }
+
+  .navList {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navItem {
+    margin-left: 0;
+    margin-bottom: var(--spacing-md);
+    /* Spacing between vertical links */
+    width: 100%;
+  }
+
+  .navLink {
+    display: block;
+    /* Make links take full width */
+    padding: var(--spacing-md) var(--spacing-sm);
+    font-size: var(--font-size-lg);
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navLink:hover::after,
+  .navLink.active::after {
+    width: 30%;
+    left: 0;
+    transform: translateX(0);
+    bottom: 0;
+  }
+
+  .mobileMenuToggle {
+    display: flex;
+    /* Show on mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+  }
+
+  .mobileMenuToggle.open .hamburgerBar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  .mobileMenuToggle.open .hamburgerBar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobileMenuToggle.open .hamburgerBar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+
+  .mobileSocialLinks {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--glass-border-color);
+  }
+
+  .socialIconLinkMobile {
+    color: var(--text-color-light);
+    font-size: var(--font-size-xl);
+    /* Larger icons for mobile */
+    margin: 0 var(--spacing-md);
+    transition: var(--transition-base);
+  }
+
+  .socialIconLinkMobile:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+  }
+}
